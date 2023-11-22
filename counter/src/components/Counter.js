@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 export default function Counter() {
-  const [count, setCount] = useState(0);
-  const [counterInfo, setCounterInfo] = useState({
+  let [count, setCount] = useState(0);
+  let [counterInfo, setCounterInfo] = useState({
     incrementCount: 0,
     decrementCount: 0,
   });
@@ -11,7 +11,7 @@ export default function Counter() {
     setCount(count + 1);
     setCounterInfo({
       ...counterInfo,
-      incrementCount: counterInfo.incrementCount + 1,
+      incrementCount: counterInfo.incrementCount + 1
     });
   };
 
@@ -19,9 +19,18 @@ export default function Counter() {
     setCount(count - 1);
     setCounterInfo({
       ...counterInfo,
-      decrementCount: counterInfo.decrementCount + 1,
+      decrementCount: counterInfo.decrementCount + 1
     });
   };
+
+  const resetBtn = () => {
+    setCount(count = 0);
+    setCounterInfo({
+      ...counterInfo,
+      decrementCount: counterInfo.decrementCount = 0,
+      incrementCount: counterInfo.incrementCount = 0
+    })
+  }
 
   return (
     <>
@@ -32,6 +41,7 @@ export default function Counter() {
         <p>Increments: {counterInfo.incrementCount}</p>
         <p>Decrements: {counterInfo.decrementCount}</p>
       </div>
+      <button onClick={resetBtn}>Reset</button>
     </>
   );
 }
